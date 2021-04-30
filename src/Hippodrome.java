@@ -6,6 +6,10 @@ public class Hippodrome {
         
     }
 
+    public Hippodrome(List<Horse> horses){
+        this.horses = horses;
+    }
+
     public ArrayList<Horse> getHorses(){
         return horses;
     }
