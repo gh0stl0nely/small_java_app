@@ -40,4 +40,20 @@ public class Horse {
     public void setDistance(double distance){
         this.distance = distance;
     }
+
+    public void move(){
+        double newDistance = Math.random() * this.getSpeed();
+        this.setDistance(newDistance + this.getDistance());
+    }
+
+    public void print(){
+        String horseName = this.getName();
+        int numberOfDots = (int) Math.floor(this.getDistance());
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < numberOfDots; i++){
+            sb.append('.');
+        }
+        sb.append(horseName);
+        System.out.println(sb.toString());
+    }
 }

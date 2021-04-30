@@ -13,6 +13,8 @@ public class Hippodrome {
             name = i == 0 ? "Andy" : (i == 1 ? "Bobby" : "Candy");
             horses.add(new Horse(name, 3.0,0));
         }
+        game.run();
+        game.printWinner();
     }
 
     public Hippodrome(ArrayList<Horse> horses){
@@ -24,15 +26,25 @@ public class Hippodrome {
     }
 
     public void move(){
-
+        List<Horse> horses = this.getHorses();
+        for(Horse horse : horses){
+            horse.move();
+        }
     }
 
     public void print(){
-
+        List<Horse> horses = this.getHorses();
+        for(Horse horse : horses){
+            horse.print();
+           
+        }
+        for(int i = 0; i < 10; i++){
+            System.out.println("");
+        }
     }
 
     public void run(){
-        for(int i = 0; i < 100; i++){
+        for(int i = 0; i < 20; i++){
             try {
                 this.move();
                 this.print();
@@ -41,5 +53,26 @@ public class Hippodrome {
                 System.out.println("Program interrupted!");
             }
         }
+    }
+
+    public Horse getWinner(){
+        Horse winner = null;
+        
+        for(Horse horse : this.getHorses()){
+            if(winner == null){
+                winner = horse;
+            } else {
+                int result = Double.compare(horse.getDistance(), winner.getDistance());
+                if(result > 0)
+                    winner = horse;
+            }
+        }
+        
+        return winner;
+    }
+    
+    public void printWinner(){
+        Horse winner = this.getWinner();
+        System.out.println(String.format("The winner is %s", winner.getName()));
     }
 }
