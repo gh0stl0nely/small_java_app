@@ -22,4 +22,24 @@ public class Hippodrome {
     public ArrayList<Horse> getHorses(){
         return horses;
     }
+
+    public void move(){
+
+    }
+
+    public void print(){
+
+    }
+
+    public void run(){
+        for(int i = 0; i < 100; i++){
+            try {
+                this.move();
+                this.print();
+                Thread.sleep(200); // Program will stop for 0.2 seconds
+            } catch (InterruptedException ie){
+                System.out.println("Program interrupted!");
+            }
+        }
+    }
 }
